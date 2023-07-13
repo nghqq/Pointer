@@ -15,7 +15,7 @@ void main()
 	std::cout << &a << std::endl; // взятие адреса переменной a прямо при выводе
 
 	std::cout << pa << std::endl; // вывод адреса переменной a хранящегося в указатели pa
-	std::cout << *pa << std::endl; // разименновывыем укзатель pa и получаем значение переменной a
+	std::cout << *pa << std::endl; // разыменновывыем укзатель pa и получаем значение переменной a
 
 	int* pb;
 	int b = 3;
@@ -35,7 +35,9 @@ void main()
 	short arr[n] = { 3,5,8,13,21 };
 
 	std::cout << arr << std::endl;
+	std::cout << std::endl;
 	std::cout << *arr << std::endl;
+	
 	
 
 	for (int  i = 0; i < n; i++)
