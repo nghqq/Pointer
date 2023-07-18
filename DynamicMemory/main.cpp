@@ -4,6 +4,7 @@
 
 void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
+void Add(int* arr, const int n);
 
 void main() 
 {
@@ -13,6 +14,8 @@ void main()
 	int* arr = new int[n];
 	FillRand(arr, n);
 	Print(arr, n);
+	Add(arr, n);
+
 	delete[] arr;
 }
 
@@ -33,3 +36,17 @@ void Print(int arr[], const int n)
 	}
 	std::cout << std::endl;
 }
+void Add(int* arr, const int n)
+{
+
+	int* temp_arr = new int[1];
+	std::cout << "¬ведите число:"; std::cin >> *temp_arr;
+	for (int i = 0; i < n; i++)
+	{
+		std::cout << arr[i]<< tab;
+		std::cout << *temp_arr;
+		
+	}
+	std::cout << std::endl;
+}
+
