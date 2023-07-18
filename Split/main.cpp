@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 
 void FillRand(int arr[], const int n);
 void Print(int arr[],const int n);
@@ -48,7 +48,7 @@ void main()
 		
 		}
 	}
-	std::cout << " ÷åòíûå ÷èñëà " << std::endl;
+	std::cout << " Ñ‡ÐµÑ‚Ð½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° " << std::endl;
 	for (int i = 0; i < count; i++)
 	{
 		std::cout << even[i] << "\t";
@@ -70,7 +70,7 @@ void main()
 
 		}
 	}
-	std::cout << " íå÷åòíûå ÷èñëà " << std::endl;
+	std::cout << " Ð½ÐµÑ‡ÐµÑ‚Ð½Ñ‹Ðµ Ñ‡Ð¸ÑÐ»Ð° " << std::endl;
 	for (int i = 0; i < n-count; i++)
 	{
 		std::cout << odd[i] << "\t";
