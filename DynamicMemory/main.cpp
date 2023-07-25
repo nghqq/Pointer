@@ -1,10 +1,16 @@
 ﻿#include<iostream>
+//#include <crtdbg.h>
+//#define _CRTDBG_MAP_ALLOC
 #define tab "\t"
 #define delimeter "\n--------------------------------------------------\n"
 
 void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
-void Add(int* arr, const int n);
+int* Push_back(int* arr, int& n, int value);
+int* Push_front(int*& arr, int& n, int value);
+int* Pop_back(int*& arr, int& n);
+int* Insert(int*& arr, int& n, int value,int index);
+
 
 void main() 
 {
@@ -14,9 +20,24 @@ void main()
 	int* arr = new int[n];
 	FillRand(arr, n);
 	Print(arr, n);
-	Add(arr, n);
-
+	int value;
+	std::cout << "Введите число: "; std::cin >> value;
+	int index;
+	std::cout << "Введите индекс: "; std::cin >> index;
+	arr = Push_back(arr, n, value);
+	Print(arr, n);
+	Pop_back(arr, n);
+	Print(arr, n);
+	arr= Push_front(arr,n,value);
+	Print(arr, n);
+	arr = Insert(arr, n, value, index);
+	Print(arr, n);
+	Pop_back(arr, n);
+	Print(arr, n);
 	delete[] arr;
+	//_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+	//_CrtDumpMemoryLeaks();
+	
 }
 
 void FillRand(int arr[], const int n) 
@@ -36,17 +57,68 @@ void Print(int arr[], const int n)
 	}
 	std::cout << std::endl;
 }
-void Add(int* arr, const int n)
-{
 
-	int* temp_arr = new int[1];
-	
-	for (int i = 0; i < n + *temp_arr; i++)
+int* Push_back(int* arr, int& n, int value) 
+{
+	int* buffer = new int[n + 1];
+	for (int i = 0; i < n; i++)
 	{
-		std::cout << arr[i]<< tab;
-		std::cout << "Введите число:"; std::cin >> *temp_arr;
+		buffer[i] = arr[i];
+	}
+	delete[]arr;
+	arr = buffer;
+	arr[n] = value;
+	n++;
+	return arr;
+	
+	
+}
+int* Push_front(int*& arr, int& n, int value)
+{
+	int* buffer = new int[n+1];
+	for (int i = 0; i < n; i++)
+	{
+		buffer[i+1] = arr[i];
 		
 	}
-	std::cout << std::endl;
+	delete[] arr;
+	arr = buffer;
+	arr[0] = value;
+	n++;
+	return arr;
 }
+int* Pop_back(int*& arr, int& n)
+{
+	int* buffer = new int[n-1];
+	for (int i = 0; i < n-1; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	delete[]arr;
+	arr = buffer;
+	n--;
+	return arr;
+}
+
+int* Insert(int*& arr, int& n, int value,int index)
+{
+	int* buffer = new int[n + 1];
+	for (int i = 0; i < index; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	for (int i = index; i < n; i++)
+	{
+		buffer[i + 1] = arr[i];
+	}
+	delete[] arr;
+	arr = buffer;
+	arr[index] = value;
+	n++;
+	return arr;
+	
+	
+}
+
+
 

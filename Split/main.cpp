@@ -41,8 +41,8 @@ void main()
 		{
 			
 			
-				even[j] = arr[i];
-				j++;
+				even[j++] = arr[i];
+				
 
 			
 		
@@ -63,8 +63,8 @@ void main()
 		{
 
 
-			odd[g] = arr[i];
-			g++;
+			odd[g++] = arr[i];
+			
 
 
 
