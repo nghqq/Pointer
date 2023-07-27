@@ -10,6 +10,8 @@ int* Push_back(int* arr, int& n, int value);
 int* Push_front(int*& arr, int& n, int value);
 int* Pop_back(int*& arr, int& n);
 int* Insert(int*& arr, int& n, int value,int index);
+int* Pop_front(int*& arr, int& n);
+int* Pop_insert(int*& arr, int& n, int index);
 
 
 void main() 
@@ -26,13 +28,15 @@ void main()
 	std::cout << "Введите индекс: "; std::cin >> index;
 	arr = Push_back(arr, n, value);
 	Print(arr, n);
-	Pop_back(arr, n);
-	Print(arr, n);
 	arr= Push_front(arr,n,value);
 	Print(arr, n);
 	arr = Insert(arr, n, value, index);
 	Print(arr, n);
-	Pop_back(arr, n);
+	arr=Pop_back(arr, n);
+	Print(arr, n);
+	arr=Pop_insert(arr, n,index);
+	Print(arr, n);
+	arr = Pop_front(arr, n);
 	Print(arr, n);
 	delete[] arr;
 	//_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
@@ -94,15 +98,16 @@ int* Pop_back(int*& arr, int& n)
 	{
 		buffer[i] = arr[i];
 	}
-	delete[]arr;
-	arr = buffer;
 	n--;
-	return arr;
+	delete[]arr;
+	//arr = buffer;
+	
+	return buffer;
 }
 
 int* Insert(int*& arr, int& n, int value,int index)
 {
-	int* buffer = new int[n + 1];
+	int* buffer = new int[n+1];
 	for (int i = 0; i < index; i++)
 	{
 		buffer[i] = arr[i];
@@ -112,13 +117,43 @@ int* Insert(int*& arr, int& n, int value,int index)
 		buffer[i + 1] = arr[i];
 	}
 	delete[] arr;
-	arr = buffer;
-	arr[index] = value;
+	//arr = buffer;
+	buffer[index] = value;
 	n++;
-	return arr;
+	return buffer;
 	
 	
 }
+int* Pop_insert(int*& arr, int& n, int index)
+{
+	int* buffer = new int[n - 1];
+	for (int i = 0; i < index; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	for (int i = index+1; i < n; i++)
+	{
+		buffer[i - 1] = arr[i];
+	}
+	delete[] arr;
+	//arr = buffer;
+	
+	n--;
+	return buffer;
+}
+int* Pop_front(int*& arr, int& n) 
+{
+	int* buffer = new int[n - 1];
+	for (int i = 1; i < n; i++)
+	{
+		buffer[i-1] = arr[i];
+	}
+	delete[]arr;
+	n--;
+	return buffer;
+
+}
+
 
 
 
