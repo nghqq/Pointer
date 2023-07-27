@@ -11,7 +11,7 @@ int* Push_front(int*& arr, int& n, int value);
 int* Pop_back(int*& arr, int& n);
 int* Insert(int*& arr, int& n, int value,int index);
 int* Pop_front(int*& arr, int& n);
-int* Pop_insert(int*& arr, int& n, int index);
+int* Erase(int*& arr, int& n, int index);
 
 
 void main() 
@@ -34,7 +34,7 @@ void main()
 	Print(arr, n);
 	arr=Pop_back(arr, n);
 	Print(arr, n);
-	arr=Pop_insert(arr, n,index);
+	arr=Erase(arr, n,index);
 	Print(arr, n);
 	arr = Pop_front(arr, n);
 	Print(arr, n);
@@ -124,7 +124,7 @@ int* Insert(int*& arr, int& n, int value,int index)
 	
 	
 }
-int* Pop_insert(int*& arr, int& n, int index)
+int* Erase(int*& arr, int& n, int index)
 {
 	int* buffer = new int[n - 1];
 	for (int i = 0; i < index; i++)
