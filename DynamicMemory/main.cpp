@@ -318,7 +318,6 @@ int** erase_row(int** arr, int& ROWS, const int COLS, int index)
 		buffer[i - 1] = arr[i];
 	}
 	delete[]arr;
-	
 	ROWS--;
 	return buffer;
 }
