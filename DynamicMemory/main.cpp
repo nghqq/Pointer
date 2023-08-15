@@ -31,6 +31,9 @@ int** pop_row_front(int** arr, int& ROWS, const int COLS);
 int** pop_row_back(int** arr, int& ROWS, const int COLS);
 int** erase_row(int** arr, int& ROWS, const int COLS, int index);
 
+int** push_col_back(int** arr, int& ROWS, int& COLS);
+//int** push_col_front(int** arr, int& ROWS, int& COLS);
+
 
 void main()
 {
@@ -104,6 +107,13 @@ void main()
 	arr = erase_row(arr, ROWS, COLS, index);
 	Print(arr, ROWS, COLS);
 	std::cout << delimeter;
+
+	arr = push_col_back(arr, ROWS, COLS);
+	Print(arr, ROWS, COLS);
+	std::cout << delimeter;
+	std::cout << std::endl;
+
+	
 
 	
 	for (int i = 0; i < ROWS; i++)
@@ -262,7 +272,7 @@ int** push_row_front(int** arr, int& ROWS, const int COLS)
 {
 	int** buffer = new int* [ROWS + 1] {};
 	for (int i = 0; i < ROWS; i++)
-		buffer[i+1] = arr[i];
+		buffer[i + 1] = arr[i];
 	delete[]arr;
 	buffer[ROWS-ROWS] = new int[COLS] {};
 	ROWS++;
@@ -315,10 +325,30 @@ int** erase_row(int** arr, int& ROWS, const int COLS, int index)
 	}
 	for (int i = index+1; i < ROWS; i++)
 	{
-		buffer[i - 1] = arr[i];
+		buffer[i-1] = arr[i];
 	}
 	delete[]arr;
 	ROWS--;
+	return buffer;
+}
+
+int** push_col_back(int** arr, int& ROWS, int& COLS)
+{
+	int** buffer = new int* [COLS + 1] {};
+	for (int i = 0; i < ROWS; i++)
+	{
+		buffer[i] = arr[i];
+
+	}
+	for (int i = 0; i <= COLS; i++)
+	{
+		arr[i][COLS] = 0;
+	}
+	
+	
+	
+	delete[]arr;
+	COLS++;
 	return buffer;
 }
 
